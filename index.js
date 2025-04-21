@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./src/database/db.js";
+import { userRoute } from "./src/routes/user.routes.js";
+import { courseRoute } from "./src/routes/courses.routes.js";
 
 
 const app = express();
@@ -10,9 +12,8 @@ const port = process.env.PORT || 4000;
 
 app.use(express.json());
 
-app.get("/register",(req,res) =>{
-    res.send(`registration page`);
-});
+app.post("/api/v1/user",userRoute);
+app.post("/api/v1/courses",courseRoute);
 
 
 
